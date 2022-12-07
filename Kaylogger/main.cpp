@@ -49,7 +49,7 @@ public:
     }
 
     void suggest(string x, bool passwd_length, bool upchar, bool lowchar, bool numb, bool character) {
-        
+        cout << "¿ - word jebany jest";
     }
 };
 
