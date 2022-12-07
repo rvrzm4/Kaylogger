@@ -76,5 +76,4 @@ int main() {
     account passwd;
     passwd.strenght();
     return 0;
-    cout << "tego typu";
 }
