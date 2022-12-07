@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 class account {
@@ -43,14 +45,31 @@ public:
                 if (!numb) { cout << "brakuje cyfry" << endl; }
                 if (!character) { cout << "brakuje znaku" << endl; }
                 if (space) { cout << "w haœle pojawia siê spacja" << endl; }
-                suggest(x, passwd_length, upchar, lowchar, numb, character);
+                //suggest(x, passwd_length, upchar, lowchar, numb, character, space);
             }
         } while (!is_secure);
     }
 
-    void suggest(string x, bool passwd_length, bool upchar, bool lowchar, bool numb, bool character) {
-        cout << "¿ - word jebany jest";
-    }
+    /*void suggest(string x, bool passwd_length, bool upchar, bool lowchar, bool numb, bool character, bool space) {
+        string offer_pswrd;
+        bool corrected__passwd_length = false, corrected__upchar = false, corrected__lowchar = false, corrected__numb = false, corrected__character = false, corrected__space = false;
+        int num = 0;
+
+        for (int i = 0; i < x.length(); i++) {
+            if (!upchar && !corrected__upchar) {
+                if (islower(x[i])) { offer_pswrd += toupper(x[i]); corrected__upchar = true; }
+            }
+            else if (!lowchar && !corrected__lowchar) {
+                if (isupper(x[i])) { offer_pswrd += tolower(x[i]); corrected__lowchar = true; }
+            }
+            else if (!numb) {
+                if (isdigit(x[i])) { srand(time(NULL)); num = rand() % 90 + 10; offer_pswrd += to_string(num); }
+            }
+            else { offer_pswrd += x[i]; }
+         
+        }
+        cout << "oferowane has³o:   " << offer_pswrd << endl << endl;
+    }*/
 };
 
 int main() {
