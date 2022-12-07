@@ -53,7 +53,6 @@ public:
     }
 };
 
-
 int main() {
     account passwd;
     passwd.strenght();
