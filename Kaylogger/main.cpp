@@ -11,7 +11,7 @@ public:
         string x;
         do {
         cout << "podaj ha³so" << endl;
-        cin >> x;
+        getline(cin, x);
         
             bool passwd_length = false, upchar = false, lowchar = false, numb = false, character = false, space = false;
             int  upchar_counter = 0, lowchar_counter = 0, numb_counter = 0, character_counter = 0;
