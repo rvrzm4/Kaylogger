@@ -10,7 +10,7 @@ public:
     void strenght() {
         string x;
         do {
-        cout << "podaj ha³so" << endl;
+        cout << "podaj haÅ‚so" << endl;
         getline(cin, x);
         
             bool passwd_length = false, upchar = false, lowchar = false, numb = false, character = false, space = false;
@@ -29,22 +29,22 @@ public:
             }
             if (passwd_length && upchar && lowchar && numb && character && !space) { is_secure = true; }
             if (is_secure) {
-                cout << "has³o spe³nia odpowiednie warunki" << endl;
-                cout << "D³ugoœæ has³a: " << x.length() << endl;
-                cout << "Iloœæ ma³ych liter: " << lowchar_counter << endl;
-                cout << "Iloœæ du¿ych liter: " << upchar_counter << endl;
-                cout << "Iloœæ znaków: " << character_counter << endl;
-                cout << "Iloœæ cyfr w haœle: " << numb_counter << endl;
+                cout << "hasÅ‚o speÅ‚nia odpowiednie warunki" << endl;
+                cout << "DÅ‚ugoÅ›Ä‡ hasÅ‚a: " << x.length() << endl;
+                cout << "IloÅ›Ä‡ maÅ‚ych liter: " << lowchar_counter << endl;
+                cout << "IloÅ›Ä‡ duÅ¼ych liter: " << upchar_counter << endl;
+                cout << "IloÅ›Ä‡ znakÃ³w: " << character_counter << endl;
+                cout << "IloÅ›Ä‡ cyfr w haÅ›le: " << numb_counter << endl;
                 break;
             }
             if (!is_secure) {
-                cout << "has³o nie spe³nia podyktowanych wymagañ" << endl;
-                if (!passwd_length) { cout << "has³o jest zbyt krótkie" << endl; }
-                if (!upchar) { cout << "brakuje du¿ej litery" << endl; }
-                if (!lowchar) { cout << "brakuje ma³ej litery" << endl; }
+                cout << "hasÅ‚o nie speÅ‚nia podyktowanych wymagaÅ„" << endl;
+                if (!passwd_length) { cout << "hasÅ‚o jest zbyt krÃ³tkie" << endl; }
+                if (!upchar) { cout << "brakuje duÅ¼ej litery" << endl; }
+                if (!lowchar) { cout << "brakuje maÅ‚ej litery" << endl; }
                 if (!numb) { cout << "brakuje cyfry" << endl; }
                 if (!character) { cout << "brakuje znaku" << endl; }
-                if (space) { cout << "w haœle pojawia siê spacja" << endl; }
+                if (space) { cout << "w haÅ›le pojawia siÄ™ spacja" << endl; }
                 //suggest(x, passwd_length, upchar, lowchar, numb, character, space);
             }
         } while (!is_secure);
@@ -68,7 +68,7 @@ public:
             else { offer_pswrd += x[i]; }
          
         }
-        cout << "oferowane has³o:   " << offer_pswrd << endl << endl;
+        cout << "oferowane hasÅ‚o:   " << offer_pswrd << endl << endl;
     }*/
 };
 
