@@ -7,25 +7,27 @@ class account {
 public:
     bool is_secure = false;
 
-    void strenght() {
+    void accept() {
         string x;
         do {
-        cout << "podaj hałso" << endl;
-        getline(cin, x);
-        
+            cout << "podaj hałso" << endl;
+            getline(cin, x);
+
             bool passwd_length = false, upchar = false, lowchar = false, numb = false, character = false, space = false;
             int  upchar_counter = 0, lowchar_counter = 0, numb_counter = 0, character_counter = 0;
-            char spec_char[8] = { '!', '@', '#', '$', '%', '^', '&', '*' };
+            int score1 = 1, score2 = 1, score3 = 1, score4 = 1; // [0]uppercase [1]lowercase [2]nubmers [3]special characters
 
             for (int i = 0; i < x.length(); i++) {
                 if (x.length() >= 8) { passwd_length = true; }
-                if (isupper(x[i])) { upchar = true; upchar_counter++; }
-                if (islower(x[i])) { lowchar = true; lowchar_counter++; }
-                if (isdigit(x[i])) { numb = true; numb_counter++; }
-                for (int z = 0; z < 8; z++) {
-                    if (x[i] == spec_char[z]) { character = true; character_counter++; }
-                }
+                if (isupper(x[i])) { upchar = true; upchar_counter++; score1 *= 36; }
+                if (islower(x[i])) { lowchar = true; lowchar_counter++; score2 *= 36; }
+                if (isdigit(x[i])) { numb = true; numb_counter++; score3 *= 10; }
                 if (x[i] == ' ') { space = true; }
+            }
+            if (x.length() != upchar_counter + lowchar_counter + numb_counter) {
+                character = true;
+                character_counter = x.length() - upchar_counter - lowchar_counter - numb_counter;
+                for (int i = 0; i < character_counter; i++) { score4 *= 33; }
             }
             if (passwd_length && upchar && lowchar && numb && character && !space) { is_secure = true; }
             if (is_secure) {
@@ -35,6 +37,8 @@ public:
                 cout << "Ilość dużych liter: " << upchar_counter << endl;
                 cout << "Ilość znaków: " << character_counter << endl;
                 cout << "Ilość cyfr w haśle: " << numb_counter << endl;
+
+                if (is_secure) { calc_strenght(x, score1, score2, score3, score4); }
                 break;
             }
             if (!is_secure) {
@@ -45,35 +49,19 @@ public:
                 if (!numb) { cout << "brakuje cyfry" << endl; }
                 if (!character) { cout << "brakuje znaku" << endl; }
                 if (space) { cout << "w haśle pojawia się spacja" << endl; }
-                //suggest(x, passwd_length, upchar, lowchar, numb, character, space);
             }
         } while (!is_secure);
     }
 
-    /*void suggest(string x, bool passwd_length, bool upchar, bool lowchar, bool numb, bool character, bool space) {
-        string offer_pswrd;
-        bool corrected__passwd_length = false, corrected__upchar = false, corrected__lowchar = false, corrected__numb = false, corrected__character = false, corrected__space = false;
-        int num = 0;
-
-        for (int i = 0; i < x.length(); i++) {
-            if (!upchar && !corrected__upchar) {
-                if (islower(x[i])) { offer_pswrd += toupper(x[i]); corrected__upchar = true; }
-            }
-            else if (!lowchar && !corrected__lowchar) {
-                if (isupper(x[i])) { offer_pswrd += tolower(x[i]); corrected__lowchar = true; }
-            }
-            else if (!numb) {
-                if (isdigit(x[i])) { srand(time(NULL)); num = rand() % 90 + 10; offer_pswrd += to_string(num); }
-            }
-            else { offer_pswrd += x[i]; }
-         
-        }
-        cout << "oferowane hasło:   " << offer_pswrd << endl << endl;
-    }*/
+    void calc_strenght(string x, int score1, int score2, int score3, int score4) {
+        int score = 0;
+        score = score1 * score2 * score3 * score4;
+        cout << "punkty hasła:      " << score;
+    }
 };
 
 int main() {
     account passwd;
-    passwd.strenght();
+    passwd.accept();
     return 0;
 }
